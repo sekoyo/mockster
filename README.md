@@ -2,6 +2,7 @@ Mockster
 ========
 
 [![Mockster on NPM](https://img.shields.io/npm/v/mockster.svg)](https://www.npmjs.com/package/mockster)
+[![Mockster on TravisCI](https://travis-ci.org/DominicTobias/mockster.svg?branch=master)](https://travis-ci.org/DominicTobias/mockster)
 
 A library for mocking fetch responses.
 
