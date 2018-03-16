@@ -102,7 +102,7 @@ mockster.post('project/create', (url, params, options) => {
 });
 ```
 
-Not all options will pass an equality check (for example [https://developer.mozilla.org/en-US/docs/Web/API/FormData](FormData)), to this effect options can also be a function:
+Not all options will pass an equality check (for example [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData), to this effect options can also be a function:
 
 ```js
 mockster.post('project/create', (url, params, options) => {
