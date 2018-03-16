@@ -25,7 +25,7 @@ Supported methods: `delete`, `get`, `patch`, `post`, `put`.
 ```js
 mockster.get('/film/:title?rating=:rating', (url, params) => {
   // params.title = 'batman'
-  // params.rating = 8
+  // params.rating = '8'
   return { something: 'to return' };
 });
 
