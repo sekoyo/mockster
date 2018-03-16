@@ -1,6 +1,7 @@
 /* global window, Response */
 import Route from 'route-parser';
 import isEqual from 'lodash/isEqual';
+import statuses from 'statuses';
 
 const mocks = {};
 const origFetch = window.fetch;
@@ -40,7 +41,7 @@ function handleResponse(rawResponse) {
   const bodyString = JSON.stringify(body);
 
   const status = rawResponse.status || 200;
-  const statusText = rawResponse.statusText || 'OK';
+  const statusText = rawResponse.statusText || statuses[status];
 
   const headers = rawResponse.headers || {
     'Content-Type': 'application/json',

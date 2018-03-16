@@ -1,11 +1,12 @@
 Mockster
---------
+========
 
 [![Mockster on NPM](https://img.shields.io/npm/v/mockster.svg)](https://www.npmjs.com/package/mockster)
 
 A library for mocking fetch responses.
 
-## Install
+Install
+-------
 
 ```
 npm i --save mockster
@@ -15,16 +16,28 @@ npm i --save mockster
 import mockster from 'mockster';
 ```
 
-## Usage
+Usage
+-----
 
 Supported methods: `delete`, `get`, `patch`, `post`, `put`.
 
 ```js
-mockster.post('project/create', (url, params, options) => {
+mockster.get('/film/:title?rating=:rating', (url, params) => {
+  // params.title = 'batman'
+  // params.rating = 8
+  return { something: 'to return' };
+});
+
+fetch('/film/batman?rating=8');
+```
+
+You can also return error responses:
+
+```js
+mockster.post('/project/create', (url, params, options) => {
   if (options.body.name === 'Farting investigation') {
     return {
       status: 409,
-      statusText: 'Conflict',
       body: 'That project already exists',
     };
   }
@@ -37,7 +50,7 @@ mockster.post('project/create', (url, params, options) => {
   };
 });
 
-fetch('project/create', {
+fetch('/project/create', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -49,7 +62,8 @@ fetch('project/create', {
 
 ```
 
-## Parameters
+Parameters
+----------
 
 Parameters are avaiable in the second arguments (params). URLs support params, splats, and optional segments.
 
@@ -68,7 +82,8 @@ Some examples:
 * `/books/*section/:title`
 * `/books?author=:author&subject=:subject`
 
-## Matching based on options
+Matching based on options
+-------------------------
 
 It is also possible to match based on options as well as the URL. A deep equal will be performed on the options you wish to compare:
 

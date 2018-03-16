@@ -175,7 +175,6 @@ test('can specify a status and statusText', async () => {
 
 test('parses JSON body for convenient use in response function', async () => {
   mockster.post('project/create', (url, params, options) => {
-    console.log(options);
     expect(options.body.name).toEqual('Hubot');
     return 'Parsed';
   });
@@ -189,4 +188,22 @@ test('parses JSON body for convenient use in response function', async () => {
       name: 'Hubot',
     }),
   });
+});
+
+test('returns a predefined statusText message if one isn\'t provided', async () => {
+  let res;
+
+  mockster.get('/test', () => ({
+    status: 404,
+    body: 'Something occured',
+  }));
+  res = await fetch('/test');
+  expect(res.statusText).toEqual('Not Found');
+
+  mockster.get('/test', () => ({
+    status: 422,
+    body: 'Something occured',
+  }));
+  res = await fetch('/test');
+  expect(res.statusText).toEqual('Unprocessable Entity');
 });

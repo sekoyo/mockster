@@ -21,6 +21,7 @@
   "dependencies": {
     "lodash": "^4.17.5",
     "route-parser": "0.0.5",
+    "statuses": "^1.4.0",
     "webpack": "^4.1.1"
   },
   "devDependencies": {
