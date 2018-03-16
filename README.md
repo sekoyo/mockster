@@ -17,6 +17,10 @@ npm i --save mockster
 import mockster from 'mockster';
 ```
 
+**Note:** `window.fetch` is automatically mocked when including this library. It's a good idea to only include mocks in a mock build so this usually isn't an issue. If you need them the library also exports `fetchHook` and `fetchUnhook`, as well as `fetchUnmock(url, method)`.
+
+Tip: You can include mocks in a webpack build with no extra config. Create a `mocks/index.js` file at your root and run `npm start -- mocks`.
+
 Usage
 -----
 

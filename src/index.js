@@ -82,7 +82,8 @@ function fetchOverride(url, options = {}) {
     const mock = getMockMatch(url, formattedOptions);
 
     if (!mock) {
-      const error = new Error(`No mock found for ${url}`);
+      const method = formattedOptions.method || 'GET';
+      const error = new Error(`No mock found for ${method} ${url}`);
       error.url = url;
       error.options = formattedOptions;
       throw error;
@@ -120,7 +121,7 @@ const mockster = {
   put: createMock('put'),
 };
 
-function fetchUnmock(method, url) {
+function fetchUnmock(url, method) {
   if (mocks[url]) {
     delete mocks[url][method];
   }

@@ -1,6 +1,32 @@
 /* globals expect, fetch, test */
 import 'whatwg-fetch';
-import mockster from './index';
+import mockster, { fetchUnmock } from './index';
+
+test('can unmock a mocked url and method', async () => {
+  let putHookCalled = false;
+  let getHookCalled = false;
+
+  mockster.put('/unmock-me', () => {
+    putHookCalled = true;
+    return { hello: 'world' };
+  });
+  mockster.get('/unmock-me', () => {
+    getHookCalled = true;
+    return { hello: 'world' };
+  });
+
+  fetchUnmock('/unmock-me', 'get');
+
+  try {
+    await fetch('/unmock-me', { method: 'GET' });
+  } catch (error) {}
+  try {
+    await fetch('/unmock-me', { method: 'PUT', body: 'test' });
+  } catch (error) {}
+
+  expect(getHookCalled).toBe(false);
+  expect(putHookCalled).toBe(true);
+});
 
 test('hooks the default GET method without params', async () => {
   let hookCalled = false;
@@ -50,7 +76,7 @@ test('hooks based on an options equality check', async () => {
     error = e;
   }
 
-  expect(error).toEqual(new Error('No mock found for /hello'));
+  expect(error).toEqual(new Error('No mock found for POST /hello'));
 
   // Matching body.
   try {
@@ -65,7 +91,7 @@ test('hooks based on an options equality check', async () => {
     error = e;
   }
 
-  expect(error).toEqual(new Error('No mock found for /hello'));
+  expect(error).toEqual(new Error('No mock found for POST /hello'));
 });
 
 test('works with params', async () => {
