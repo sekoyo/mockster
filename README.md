@@ -1,4 +1,5 @@
-# Mockster
+Mockster
+--------
 
 [![Mockster on NPM](https://img.shields.io/npm/v/mockster.svg)](https://www.npmjs.com/package/mockster)
 
