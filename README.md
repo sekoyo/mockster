@@ -4,7 +4,7 @@ Mockster
 [![Mockster on NPM](https://img.shields.io/npm/v/mockster.svg)](https://www.npmjs.com/package/mockster)
 [![Mockster on TravisCI](https://travis-ci.org/DominicTobias/mockster.svg?branch=master)](https://travis-ci.org/DominicTobias/mockster)
 
-A library for mocking [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)) responses.
+A library for mocking [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) responses.
 
 Install
 -------
