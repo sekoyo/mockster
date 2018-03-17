@@ -184,6 +184,16 @@ test('can return a promise', async () => {
     .then(res => expect(res).toEqual({ hello: 'world' }));
 });
 
+test('returns a 500 status if the promise rejects without a status', async () => {
+  mockster.get('/hello', () =>
+    new Promise((resolve, reject) => {
+      setTimeout(() => reject({ hello: 'hell' }), 10);
+    }));
+
+  const res = await fetch('/hello')
+  expect(res.status).toEqual(500);
+});
+
 test('can specify a status and statusText', async () => {
   mockster.get('/hello', () => ({
     body: 'You dont\'t have permission to access this resource.',

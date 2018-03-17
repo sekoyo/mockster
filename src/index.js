@@ -36,11 +36,11 @@ function getMockMatch(url, options = {}) {
   return false;
 }
 
-function handleResponse(rawResponse) {
+function handleResponse(rawResponse, isRejected) {
   const body = rawResponse.body || rawResponse;
   const bodyString = JSON.stringify(body);
 
-  const status = rawResponse.status || 200;
+  const status = rawResponse.status || (isRejected ? 500 : 200);
   const statusText = rawResponse.statusText || statuses[status];
 
   const headers = rawResponse.headers || {
@@ -96,7 +96,7 @@ function fetchOverride(url, options = {}) {
     }
 
     if (typeof result === 'object' && result.then) {
-      return result.then(handleResponse);
+      return result.catch(r => handleResponse(r, true)).then(handleResponse);
     }
 
     return Promise.resolve(handleResponse(result));

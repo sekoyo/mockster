@@ -1,6 +1,6 @@
 {
   "name": "mockster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A library for mocking window.fetch",
   "main": "dist/mockster.js",
   "scripts": {
