@@ -67,6 +67,15 @@ fetch('/project/create', {
 
 ```
 
+You can also return a Promise if you want to delay the response or do async work:
+
+```js
+mockster.get('/hello', () =>
+  new Promise((resolve) => {
+    setTimeout(() => resolve({ hello: 'world' }), 300);
+  }));
+```
+
 Parameters
 ----------
 
