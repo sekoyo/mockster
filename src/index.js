@@ -92,7 +92,7 @@ function fetchOverride(url, options = {}) {
     const result = mock.response(url, mock.route.match(url), formattedOptions);
 
     if (!result) {
-      throw new Error('The fetch mock function must return a Promise or object');
+      throw new Error('The fetch mock function must return a Promise or object/primitive');
     }
 
     if (typeof result === 'object' && result.then) {
