@@ -36,7 +36,7 @@ mockster.get('/film/:title?rating=:rating', (url, params) => {
 fetch('/film/batman?rating=8');
 ```
 
-You can also return error responses using `status` and `body`, as well as a `headers` object if you're response isn't JSON.
+You can also return error responses using `status` and `body`, as well as a `headers` object if your response isn't JSON.
 
 ```js
 mockster.post('/project/create', (url, params, options) => {
