@@ -4,7 +4,7 @@ Mockster
 [![Mockster on NPM](https://img.shields.io/npm/v/mockster.svg)](https://www.npmjs.com/package/mockster)
 [![Mockster on TravisCI](https://travis-ci.org/DominicTobias/mockster.svg?branch=master)](https://travis-ci.org/DominicTobias/mockster)
 
-A library for mocking fetch responses.
+A library for mocking [fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) responses.
 
 Install
 -------
@@ -36,7 +36,7 @@ mockster.get('/film/:title?rating=:rating', (url, params) => {
 fetch('/film/batman?rating=8');
 ```
 
-You can also return error responses using `status` and `body`, as well as a `headers` object if you're response isn't JSON.
+You can also return error responses using `status` and `body`, as well as a `headers` object if your response isn't JSON.
 
 ```js
 mockster.post('/project/create', (url, params, options) => {
